@@ -19,3 +19,4 @@ class User(AbstractUser):
     custom user model
     """
     roles = models.ManyToManyField(Role)
+

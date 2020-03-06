@@ -35,16 +35,16 @@ INSTALLED_APPS = [
     'oscar',
     'oscar.apps.analytics',
     'apps.checkout',
-    'oscar.apps.address',
-    'oscar.apps.shipping',
+    'apps.address',
+    'apps.shipping',
     'oscar.apps.catalogue',
     'oscar.apps.catalogue.reviews',
     'oscar.apps.partner',
     'oscar.apps.basket',
     'oscar.apps.payment',
     'oscar.apps.offer',
-    'oscar.apps.order',
-    'oscar.apps.customer',
+    'apps.order',
+    'apps.customer',
     'oscar.apps.search',
     'oscar.apps.voucher',
     'oscar.apps.wishlists',
@@ -71,6 +71,9 @@ INSTALLED_APPS = [
     'captcha',
 
     'core',
+    'tasks',
+    'apps.gs_payment',
+    'apps.gs_shipping'
 ]
 
 MIDDLEWARE = [
@@ -142,3 +145,6 @@ AUTHENTICATION_BACKENDS = (
 
 
 AUTH_USER_MODEL = "core.User"
+
+
+PHONENUMBER_DEFAULT_REGION = 'NATIONAL'
