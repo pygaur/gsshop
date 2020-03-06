@@ -34,7 +34,7 @@ INSTALLED_APPS = [
 
     'oscar',
     'oscar.apps.analytics',
-    'oscar.apps.checkout',
+    'apps.checkout',
     'oscar.apps.address',
     'oscar.apps.shipping',
     'oscar.apps.catalogue',
@@ -68,6 +68,7 @@ INSTALLED_APPS = [
     #'treebeard',
     'sorl.thumbnail',
     'django_tables2',
+    'captcha',
 
     'core',
 ]
