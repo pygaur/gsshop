@@ -1,4 +1,4 @@
-import oscar.apps.address.apps as apps
+import apps.address.apps as apps
 
 
 class AddressConfig(apps.AddressConfig):
