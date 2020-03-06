@@ -5,7 +5,7 @@ from oscar.apps.checkout.views import PaymentDetailsView as CorePaymentDetailsVi
 from oscar.core.loading import get_model
 
 from .forms import CODForm
-from payment_methods import gateway
+from core import gateway
 from oscar.apps.payment.forms import  BillingAddressForm
 
 Source = get_model("payment", "Source")

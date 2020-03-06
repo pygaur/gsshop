@@ -5,4 +5,5 @@ django-tables2==1.21.2
 Django==2.2.11
 sorl-thumbnail==12.6.3
 django-simple-captcha
-pycountry
+pycountry==19.8.18
+celery==4.4.1
