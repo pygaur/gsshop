@@ -68,6 +68,8 @@ INSTALLED_APPS = [
     #'treebeard',
     'sorl.thumbnail',
     'django_tables2',
+
+    'core',
 ]
 
 MIDDLEWARE = [
@@ -136,3 +138,6 @@ AUTHENTICATION_BACKENDS = (
     'oscar.apps.customer.auth_backends.EmailBackend',
     'django.contrib.auth.backends.ModelBackend',
 )
+
+
+AUTH_USER_MODEL = "core.User"
