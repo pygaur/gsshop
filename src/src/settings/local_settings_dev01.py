@@ -15,14 +15,16 @@ SITE_ID = 1
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
+# Use a Sqlite database by default
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'gs_db',
-        'USER': 'gs_db_user',
-        'PASSWORD': 'password',
-        'HOST': 'localhost',
-        'PORT': '',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'db.sqlite',
+        'USER': None,
+        'PASSWORD': None,
+        'HOST':  None,
+        'PORT': None,
+        'ATOMIC_REQUESTS': True
     }
 }
 

@@ -13,3 +13,4 @@ class EmailUserCreationForm(EmailUserCreationForm):
         """
         model = User
         fields = ('name', 'email', 'phone_number')
+

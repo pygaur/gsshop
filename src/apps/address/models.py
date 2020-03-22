@@ -8,17 +8,13 @@ from oscar.apps.address.abstract_models import AbstractUserAddress
 from phonenumber_field.modelfields import PhoneNumberField
 
 
-class ADDRESSTYPE:
-    """
-    address type choice options
-    """
-    OFFICE = 1
-    HOME = 2
+OFFICE = 1
+HOME = 2
 
-    CHOICES = (
-        (OFFICE, 'OFFICE'),
-        (HOME, 'HOME')
-    )
+CHOICES = (
+    (OFFICE, 'OFFICE'),
+    (HOME, 'HOME')
+)
 
 
 class UserAddress(AbstractUserAddress):
@@ -28,7 +24,7 @@ class UserAddress(AbstractUserAddress):
     alt_phone_number = PhoneNumberField(
         _("Alternate Phone number"), blank=True,
         help_text=_("Alternate Contact Number"))
-    address_type = models.IntegerField(choices=ADDRESSTYPE.CHOICES, default=ADDRESSTYPE.HOME)
+    address_type = models.IntegerField(choices=CHOICES, default=HOME)
 
     def clean(self):
         # Strip all whitespace

@@ -6,7 +6,7 @@ from oscar.apps.customer.mixins import RegisterUserMixin
 from oscar.core.loading import get_class, get_model
 from oscar.core.compat import get_user_model
 
-from core.celery import app as celery_app
+from tasks.celery import app as celery_app
 
 User = get_user_model()
 

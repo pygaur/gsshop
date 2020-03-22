@@ -2,7 +2,7 @@
 """
 from django.db import transaction
 
-from src.core.models import CashOnDeliveryTransaction
+from apps.gs_payment.models import CashOnDeliveryTransaction
 
 
 @transaction.atomic

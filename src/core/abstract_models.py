@@ -8,7 +8,7 @@ from django.contrib.auth.validators import UnicodeUsernameValidator
 
 from phonenumber_field.modelfields import PhoneNumberField
 
-from .options import GENDER
+from .options import GENDER_CHOICES
 
 
 class AbstractUser(auth_models.AbstractBaseUser,
@@ -35,13 +35,15 @@ class AbstractUser(auth_models.AbstractBaseUser,
 
     name = models.CharField(max_length=255)
     email = models.EmailField(_('email address'))
-    phone_number = PhoneNumberField(_("Mobile Number"), unique=True)
+    phone_number = PhoneNumberField(_("Mobile Number"),
+                                    unique=True,
+                                    validators=[])
     dob = models.DateField(_('Date of Birth'), null=True, blank=True)
 
     is_mobile_verified = models.NullBooleanField()
     is_email_verified = models.NullBooleanField()
 
-    gender = models.PositiveSmallIntegerField(choices=GENDER.CHOICES,
+    gender = models.PositiveSmallIntegerField(choices=GENDER_CHOICES,
                                               verbose_name='Gender',
                                               null=True)
 

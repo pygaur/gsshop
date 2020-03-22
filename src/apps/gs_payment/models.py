@@ -12,6 +12,10 @@ class CashOnDeliveryTransaction(models.Model):
     """
     """
     order_number = models.CharField(_('Order Number'), max_length=128)
+
+
+    order_number1 = models.CharField(_('Order Number'), max_length=128)
+
     date_created = models.DateTimeField(_('Date Created'), auto_now_add=True)
     amount = models.DecimalField(
         _('Amount'), max_digits=12, decimal_places=2, null=True, blank=True)
