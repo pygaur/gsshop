@@ -72,7 +72,7 @@ INSTALLED_APPS = [
 
     'core',
     'tasks',
-    #'apps.gs_payment',
+    'apps.gs_payment',
     'apps.gs_shipping'
 ]
 
@@ -149,3 +149,4 @@ AUTH_USER_MODEL = "core.User"
 
 PHONENUMBER_DEFAULT_REGION = 'NATIONAL'
 PHONENUMBER_DEFAULT_REGION= "IN"
+

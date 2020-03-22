@@ -8,6 +8,7 @@ from oscar.core.compat import get_user_model
 
 from tasks.celery import app as celery_app
 
+
 User = get_user_model()
 
 CommunicationEventType = get_model('customer', 'CommunicationEventType')
