@@ -34,17 +34,17 @@ INSTALLED_APPS = [
 
     'oscar',
     'oscar.apps.analytics',
-    'oscar.apps.checkout',
-    'oscar.apps.address',
-    'oscar.apps.shipping',
+    'apps.checkout',
+    'apps.address',
+    'apps.shipping',
     'oscar.apps.catalogue',
     'oscar.apps.catalogue.reviews',
     'oscar.apps.partner',
     'oscar.apps.basket',
     'oscar.apps.payment',
     'oscar.apps.offer',
-    'oscar.apps.order',
-    'oscar.apps.customer',
+    'apps.order',
+    'apps.customer',
     'oscar.apps.search',
     'oscar.apps.voucher',
     'oscar.apps.wishlists',
@@ -66,8 +66,14 @@ INSTALLED_APPS = [
     'widget_tweaks',
     #'haystack',
     #'treebeard',
-    #'sorl.thumbnail',
+    'sorl.thumbnail',
     'django_tables2',
+    'captcha',
+
+    'core',
+    'tasks',
+    'apps.gs_payment',
+    'apps.gs_shipping'
 ]
 
 MIDDLEWARE = [
@@ -136,3 +142,11 @@ AUTHENTICATION_BACKENDS = (
     'oscar.apps.customer.auth_backends.EmailBackend',
     'django.contrib.auth.backends.ModelBackend',
 )
+
+
+AUTH_USER_MODEL = "core.User"
+
+
+PHONENUMBER_DEFAULT_REGION = 'NATIONAL'
+PHONENUMBER_DEFAULT_REGION= "IN"
+
