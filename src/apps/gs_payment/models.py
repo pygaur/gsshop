@@ -28,7 +28,7 @@ class CashOnDeliveryTransaction(models.Model):
 
     class Meta:
         ordering = ('-date_created',)
-        app_label = 'payment_methods'
+        app_label = 'gs_payment'
         verbose_name = _('Cash on Delivery')
 
     @property

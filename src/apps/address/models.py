@@ -2,14 +2,15 @@
 """
 from django.utils.translation import ugettext_lazy as _
 from django.db import models
+from django.core import exceptions
 
 from oscar.apps.address.abstract_models import AbstractUserAddress
 
 from phonenumber_field.modelfields import PhoneNumberField
 
 
-OFFICE = 1
-HOME = 2
+OFFICE = '1'
+HOME = '2'
 
 CHOICES = (
     (OFFICE, 'OFFICE'),
@@ -24,7 +25,32 @@ class UserAddress(AbstractUserAddress):
     alt_phone_number = PhoneNumberField(
         _("Alternate Phone number"), blank=True,
         help_text=_("Alternate Contact Number"))
-    address_type = models.IntegerField(choices=CHOICES, default=HOME)
+    address_type = models.CharField(max_length=1,
+                                    choices=CHOICES, default=HOME)
+
+    # Fields, used for `summary` property definition and hash generation.
+    base_fields = hash_fields = ['salutation', 'address_type', 'line1', 'line2',
+                                 'line3', 'line4', 'state', 'postcode', 'country']
+
+    def get_field_values(self, fields):
+        field_values = []
+        for field in fields:
+            # Title is special case
+            if field == 'title':
+                value = self.get_title_display()
+            elif field == 'address_type':
+                value = self.get_address_type_display()
+            elif field == 'country':
+                try:
+                    value = self.country.printable_name
+                except exceptions.ObjectDoesNotExist:
+                    value = ''
+            elif field == 'salutation':
+                value = self.salutation
+            else:
+                value = getattr(self, field)
+            field_values.append(value)
+        return field_values
 
     def clean(self):
         # Strip all whitespace
@@ -38,7 +64,7 @@ class UserAddress(AbstractUserAddress):
 
     def _update_search_text(self):
         search_fields = filter(
-            bool, [self.first_name,
+            bool, [self.first_name, self.address_type,
                    self.line1, self.line2, self.line3, self.line4,
                    self.state, self.postcode, self.country.name])
         self.search_text = ' '.join(search_fields)
@@ -57,7 +83,7 @@ class UserAddress(AbstractUserAddress):
     def landmark(self):
         return self.line3
 
-    # city already defined in parent class
+    # city already defined in parent class as line4
 
     @property
     def pincode(self):
