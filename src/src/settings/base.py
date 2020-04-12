@@ -71,7 +71,7 @@ INSTALLED_APPS = [
     'captcha',
 
     'core',
-    'tasks',
+    #'tasks',
     'apps.gs_payment',
     'apps.gs_shipping'
 ]
@@ -150,3 +150,7 @@ AUTH_USER_MODEL = "core.User"
 PHONENUMBER_DEFAULT_REGION = 'NATIONAL'
 PHONENUMBER_DEFAULT_REGION= "IN"
 
+
+# Celery
+
+#sCELERY_BROKER_URL = 'amqp://localhost'
