@@ -153,4 +153,4 @@ PHONENUMBER_DEFAULT_REGION= "IN"
 
 # Celery
 
-#sCELERY_BROKER_URL = 'amqp://localhost'
+#CELERY_BROKER_URL = 'amqp://localhost'

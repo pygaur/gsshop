@@ -39,6 +39,7 @@ OSCAR_ALLOW_ANON_CHECKOUT = False
 
 OSCAR_INITIAL_ORDER_STATUS = 'Pending'
 OSCAR_INITIAL_LINE_STATUS = 'Pending'
+
 OSCAR_ORDER_STATUS_PIPELINE = {
     'Pending': ('Being processed', 'Cancelled',),
     'Being processed': ('Complete', 'Cancelled',),
@@ -189,7 +190,3 @@ OSCAR_DASHBOARD_NAVIGATION = [
         'url_name': 'dashboard:reports-index',
     },
 ]
-CAPTCHA_LENGTH = 6
-CAPTCHA_FONT_SIZE = 26
-CAPTCHA_FOREGROUND_COLOR = '#000000'
-CAPTCHA_NOISE_FUNCTIONS = ('captcha.helpers.noise_arcs',)
