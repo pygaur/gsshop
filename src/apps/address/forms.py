@@ -10,7 +10,6 @@ UserAddress = get_model('address', 'useraddress')
 class UserAddressForm(PhoneNumberMixin, AbstractAddressForm):
     """
     """
-
     class Meta:
         """
         """

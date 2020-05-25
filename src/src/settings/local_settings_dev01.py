@@ -74,3 +74,12 @@ try:
     from .oscar_settings import *
 except ImportError:
     pass
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+CAPTCHA_LENGTH = 6
+CAPTCHA_FONT_SIZE = 26
+CAPTCHA_FOREGROUND_COLOR = '#000000'
+CAPTCHA_NOISE_FUNCTIONS = ('captcha.helpers.noise_arcs',)
+CAPTCHA_TEST_MODE = True

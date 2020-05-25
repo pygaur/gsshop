@@ -41,8 +41,14 @@ class PaymentDetailsView(CorePaymentDetailsView):
         cod_form = CODForm(request.POST)
         if cod_form.is_valid():
             return self.render_preview(request)
-
         return self.render_payment_details(request, cod_form=cod_form)
+
+    def get_pre_conditions(self, request):
+        if self.preview:
+            # The preview view needs to ensure payment information has been
+            # correctly captured.
+            return self.pre_conditions + ['check_payment_data_is_captured']
+        return super().get_pre_conditions(request)
 
     def handle_payment(self, order_number, total, **kwargs):
         """
