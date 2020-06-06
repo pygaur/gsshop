@@ -1,7 +1,7 @@
 # Django Oscar
 django-oscar==2.0.4
 Babel==2.8.0
-Django==2.2.12
+Django==2.2.13
 django-extra-views==0.11.0
 django-haystack==2.8.1
 django-phonenumber-field==2.0.1
