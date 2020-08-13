@@ -4,7 +4,7 @@ from django.forms import Form
 from oscar.apps.checkout.forms import ShippingAddressForm
 from oscar.core.loading import get_model
 
-from captcha.fields import CaptchaField
+#from captcha.fields import CaptchaField
 
 
 class ShippingAddressForm(ShippingAddressForm):
@@ -37,9 +37,8 @@ class ShippingAddressForm(ShippingAddressForm):
         }
 
 
-class CODForm(Form):
-    """
-    cash on delivery form to display captcha.
-    """
-    captcha = CaptchaField()
-
+#class CODForm(Form):
+#    """
+#    cash on delivery form to display captcha.
+#    """
+#    captcha = CaptchaField()
