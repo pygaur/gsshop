@@ -9,24 +9,25 @@ from oscar.apps.address.abstract_models import AbstractUserAddress
 from phonenumber_field.modelfields import PhoneNumberField
 
 
-OFFICE = '1'
-HOME = '2'
-
-CHOICES = (
-    (OFFICE, 'OFFICE'),
-    (HOME, 'HOME')
-)
+class AddressTypes(models.TextChoices):
+    """
+    """
+    OFFICE = "1", "OFFICE"
+    HOME = "2", "HOME"
 
 
 class UserAddress(AbstractUserAddress):
     """
     """
-    email = models.EmailField(_("Email ID"), blank=True, help_text=_("Email Address"))
+    email = models.EmailField(_("Email ID"),
+                              blank=True,
+                              help_text=_("Email Address"))
     alt_phone_number = PhoneNumberField(
         _("Alternate Phone number"), blank=True,
         help_text=_("Alternate Contact Number"))
     address_type = models.CharField(max_length=1,
-                                    choices=CHOICES, default=HOME)
+                                    choices=AddressTypes.choices,
+                                    default=AddressTypes.HOME)
 
     # Fields, used for `summary` property definition and hash generation.
     base_fields = hash_fields = ['salutation', 'address_type', 'line1', 'line2',
@@ -64,7 +65,7 @@ class UserAddress(AbstractUserAddress):
 
     def _update_search_text(self):
         search_fields = filter(
-            bool, [self.first_name, self.address_type,
+            bool, [self.first_name, self.get_address_type_display(),
                    self.line1, self.line2, self.line3, self.line4,
                    self.state, self.postcode, self.country.name])
         self.search_text = ' '.join(search_fields)
@@ -99,5 +100,6 @@ class UserAddress(AbstractUserAddress):
     @property
     def name(self):
         return self.first_name
+
 
 from oscar.apps.address.models import *  # noqa isort:skip
