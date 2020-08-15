@@ -10,15 +10,11 @@ from oscar.apps.address.abstract_models import AbstractShippingAddress, \
 from phonenumber_field.modelfields import PhoneNumberField
 
 
-class ADDRESSTYPE:
+class AddressTypes(models.TextChoices):
     """
     """
-    OFFICE = '1'
-    HOME = '2'
-    CHOICES = (
-        (OFFICE, 'OFFICE'),
-        (HOME, 'HOME')
-    )
+    OFFICE = "1", "OFFICE"
+    HOME = "2", "HOME"
 
 
 class ShippingAddress(AbstractShippingAddress):
@@ -29,8 +25,8 @@ class ShippingAddress(AbstractShippingAddress):
         _("Alternate Phone number"), blank=True,
         help_text=_("Alternate Contact Number"))
     address_type = models.CharField(max_length=1,
-                                    choices=ADDRESSTYPE.CHOICES,
-                                    default=ADDRESSTYPE.HOME)
+                                    choices=AddressTypes.choices,
+                                    default=AddressTypes.HOME)
 
     date_created = models.DateTimeField(_("Date Created"), auto_now_add=True)
     last_updated = models.DateTimeField(_("Date Created"), auto_now=True)
@@ -71,7 +67,7 @@ class ShippingAddress(AbstractShippingAddress):
 
     def _update_search_text(self):
         search_fields = filter(
-            bool, [self.first_name, self.address_type,
+            bool, [self.first_name, self.get_address_type_display(),
                    self.line1, self.line2, self.line3, self.line4,
                    self.state, self.postcode, self.country.name])
         self.search_text = ' '.join(search_fields)
@@ -107,6 +103,7 @@ class ShippingAddress(AbstractShippingAddress):
     def name(self):
         return self.first_name
 
+
 class BillingAddress(AbstractBillingAddress):
     """
     """
@@ -120,7 +117,8 @@ class BillingAddress(AbstractBillingAddress):
         help_text=_("Alternate Contact Number"))
 
     address_type = models.CharField(max_length=1,
-                                    choices=ADDRESSTYPE.CHOICES, default=ADDRESSTYPE.HOME)
+                                    choices=AddressTypes.choices,
+                                    default=AddressTypes.HOME)
 
     date_created = models.DateTimeField(_("Date Created"), auto_now_add=True)
     last_updated = models.DateTimeField(_("Date Created"), auto_now=True)
@@ -161,7 +159,7 @@ class BillingAddress(AbstractBillingAddress):
 
     def _update_search_text(self):
         search_fields = filter(
-            bool, [self.first_name, self.address_type,
+            bool, [self.first_name, self.get_address_type_display(),
                    self.line1, self.line2, self.line3, self.line4,
                    self.state, self.postcode, self.country.name])
         self.search_text = ' '.join(search_fields)

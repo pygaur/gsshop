@@ -1,22 +1,29 @@
+"""
+"""
 from django.db import models
+from django.utils.translation import gettext_lazy as _
 
 from .abstract_models import AbstractUser
-from .options import ROLE_CHOICES
 
 
-class Role(models.Model):
-    """
-    to store roles available
-    """
-    id = models.PositiveSmallIntegerField(choices=ROLE_CHOICES, primary_key=True)
-
-    def __str__(self):
-        return self.get_id_display()
+class Types(models.TextChoices):
+    USER = "SPY", "Spy"
+    ADMIN = "DRIVER", "Driver"
+    DASHBOARD_USER = "DASHBOARD_USER", "DASHBOARD_USER"
 
 
 class User(AbstractUser):
     """
     custom user model
     """
-    roles = models.ManyToManyField(Role)
+    base_type = Types.USER
 
+    # What type of user are we?
+    type = models.CharField(
+        _("Type"), max_length=50, choices=Types.choices, default=base_type
+    )
+
+    def save(self, *args, **kwargs):
+        if not self.id:
+            self.type = self.base_type
+        return super().save(*args, **kwargs)

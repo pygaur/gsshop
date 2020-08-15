@@ -34,8 +34,8 @@ HAYSTACK_CONNECTIONS = {
 
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
-STATIC_ROOT = os.path.join(CWR, 'static')
-MEDIA_ROOT = 'media'
+STATIC_ROOT = str(BASE_DIR / 'static')
+MEDIA_ROOT = str(BASE_DIR / 'media')
 STATICFILES_DIRS = (
-    os.path.join(CWR, 'gs_static'),
+    str(BASE_DIR / 'gs_static'),
 )

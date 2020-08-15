@@ -1,0 +1,63 @@
+{% extends "ui/base.html" %}
+{% load static %}
+
+{% block styles %}
+    {% if use_less %}
+        <link rel="stylesheet/less" type="text/css" href="{% static "oscar/less/styles.less" %}" />
+    {% else %}
+
+	<link rel="stylesheet" href="/static/ui/css/bootstrap.min.css" type="text/css">
+	<!-- Dropdownhover CSS -->
+	<link rel="stylesheet" href="/static/ui/css/bootstrap-dropdownhover.min.css" type="text/css">
+	<!-- fonts awesome -->
+	<link rel="stylesheet" href="/static/ui/font/css/font-awesome.min.css" type="text/css">
+	<!-- Plugin CSS -->
+	<link rel="stylesheet" href="/static/ui/css/animate.min.css" type="text/css">
+	<!-- Custom CSS -->
+    <link href="/static/ui/css/responsive.css" rel="stylesheet">
+
+
+
+	<link rel="stylesheet" href="/static/ui/css/style.css" type="text/css">
+	<!-- Owl Carousel /static/ui -->
+
+	<link href="/static/ui/css/revolution-slider.css" rel="stylesheet">
+	<link href="/static/ui/owl-carousel/owl.carousel.css" rel="stylesheet">
+    {% endif %}
+{% endblock %}
+
+{% block layout %}
+    {% block content_wrapper %}
+    {% endblock %}
+
+{% endblock %}
+
+{% block cdn_scripts %}
+  {{ block.super }}
+  {% if use_less and debug %}
+    {# Load the on-the-fly less compiler. Never do this in production. #}
+    <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.9.0/less.min.js"></script>
+  {% endif %}
+{% endblock %}
+
+{# Local scripts #}
+{% block scripts %}
+    {{ block.super }}
+    <!-- Oscar -->
+    <script src="{% static "oscar/js/oscar/ui.js" %}"></script>
+{% endblock %}
+
+
+
+{% block extrascripts %}
+    {% include "ui/partials/extrascripts.html" %}
+    {{ block.super }}
+{% endblock %}
+
+
+
+
+{% block onbodyload %}
+    {{ block.super }}
+    oscar.init();
+{% endblock %}

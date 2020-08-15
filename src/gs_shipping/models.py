@@ -1,3 +1,5 @@
+"""
+"""
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.utils.text import slugify
@@ -23,5 +25,3 @@ class ShippingMethod(models.Model):
         app_label = 'gs_shipping'
         verbose_name = _("Shipping Method")
         verbose_name_plural = _("Shipping Methods")
-
-

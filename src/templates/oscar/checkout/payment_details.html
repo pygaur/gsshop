@@ -9,27 +9,34 @@
     {% include 'oscar/checkout/nav.html' with step=3 %}
 {% endblock %}
 
+{% block checkout_title %}{% trans "Enter payment details" %}{% endblock %}
+
 {% block order_contents %}{% endblock %}
 {% block shipping_address %}{% endblock %}
 {% block shipping_method %}{% endblock %}
 {% block payment_method %}{% endblock %}
 
+
+
+
+
+
 {% block payment_details %}
     {% block payment_details_content %}
+        <p>{% trans "You've chosen to pay cash on delivery." %}</p>
 
-         <p>{% trans "You've chosen to pay cash on delivery." %}</p>
 
-    <div class="row-fluid">
-        <div class="well col-sm-6">
+                <div class="coupan-form">
         <form action="{% url 'checkout:preview' %}" class="payment-details form-horizontal" method="post">
-            {% csrf_token %}
-            {{ cod_form.non_field_errors }}
-            {{  cod_form.as_p }}
-            <button class='js-captcha-refresh'>Reload</button>
-            <input type="submit" class="pull-right btn btn-primary btn-lg" value="{% trans "Continue" %}"/>
+            <div class="form-group">
+                {% csrf_token %}
+                {{ cod_form.non_field_errors }}
+                {{  cod_form.as_p }}
+
+                <button type="submit" class="theme-btn">{% trans "Continue" %} <span class="icon fa fa-long-arrow-right"></span></button>
+            </div>
         </form>
         </div>
-    </div>
 
     {% endblock payment_details_content %}
 {% endblock payment_details %}

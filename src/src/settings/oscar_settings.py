@@ -7,22 +7,10 @@ from django.utils.translation import gettext_lazy as _
 
 OSCAR_SHOP_NAME = 'Gurukul Sankalp'
 OSCAR_SHOP_TAGLINE = ''
-OSCAR_HOMEPAGE = reverse_lazy('catalogue:index')
+OSCAR_HOMEPAGE = reverse_lazy('ui_index')
 
 # Dynamic class loading
 OSCAR_DYNAMIC_CLASS_LOADER = 'oscar.core.loading.default_class_loader'
-
-# Basket settings
-OSCAR_BASKET_COOKIE_LIFETIME = 7 * 24 * 60 * 60
-OSCAR_BASKET_COOKIE_OPEN = 'oscar_open_basket'
-OSCAR_BASKET_COOKIE_SECURE = False
-OSCAR_MAX_BASKET_QUANTITY_THRESHOLD = 10000
-
-# Recently-viewed products
-OSCAR_RECENTLY_VIEWED_COOKIE_LIFETIME = 7 * 24 * 60 * 60
-OSCAR_RECENTLY_VIEWED_COOKIE_NAME = 'oscar_history'
-OSCAR_RECENTLY_VIEWED_COOKIE_SECURE = False
-OSCAR_RECENTLY_VIEWED_PRODUCTS = 20
 
 # Currency
 OSCAR_DEFAULT_CURRENCY = 'INR'
@@ -37,19 +25,11 @@ OSCAR_MISSING_IMAGE_URL = 'image_not_found.jpg'
 
 # Address settings
 OSCAR_REQUIRED_ADDRESS_FIELDS = ('first_name', 'last_name', 'line1',
-                                 'line4', 'postcode', 'country')
+                                 'line4', 'postcode', 'country', 'phone_number',
+                                 'line2', 'state'
+                                 )
 
-# Pagination settings
 
-OSCAR_OFFERS_PER_PAGE = 20
-OSCAR_PRODUCTS_PER_PAGE = 20
-OSCAR_REVIEWS_PER_PAGE = 20
-OSCAR_NOTIFICATIONS_PER_PAGE = 20
-OSCAR_EMAILS_PER_PAGE = 20
-OSCAR_ORDERS_PER_PAGE = 20
-OSCAR_ADDRESSES_PER_PAGE = 20
-OSCAR_STOCK_ALERTS_PER_PAGE = 20
-OSCAR_DASHBOARD_ITEMS_PER_PAGE = 20
 
 # Checkout
 OSCAR_ALLOW_ANON_CHECKOUT = False
@@ -256,6 +236,9 @@ OSCAR_SAVE_SENT_EMAILS_TO_DB = True
 ######################
 # Custom settings
 
+OSCAR_INITIAL_ORDER_STATUS = 'New'
+OSCAR_INITIAL_LINE_STATUS = 'New'
+
 OSCAR_ORDER_STATUS_PIPELINE = {
     'Pending': ('Being processed', 'Cancelled',),
     'Being processed': ('Complete', 'Cancelled',),
@@ -263,8 +246,18 @@ OSCAR_ORDER_STATUS_PIPELINE = {
     'Complete': (),
 }
 
+
+OSCAR_LINE_STATUS_PIPELINE = {
+    'New':  ('Prepared',  'Canceled',),
+    'Prepared':  ('Shipped', 'Canceled',),
+    'Canceled':  (),
+}
+
 OSCAR_ORDER_STATUS_CASCADE = {
     'Being processed': 'Being processed',
     'Cancelled': 'Cancelled',
     'Complete': 'Shipped',
 }
+
+
+

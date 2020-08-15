@@ -3,9 +3,9 @@ from decimal import Decimal as D
 from oscar.apps.shipping.repository import Repository as CoreRepository
 from oscar.apps.shipping.methods import Free
 
-from apps.gs_shipping.models import ShippingMethod
-from apps.shipping.methods import GSFree, GSFixedPrice
+from gs_shipping.models import ShippingMethod
 
+from apps.shipping.methods import GSFree, GSFixedPrice
 
 
 class Repository(CoreRepository):
