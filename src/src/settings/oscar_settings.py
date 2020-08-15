@@ -84,6 +84,11 @@ OSCAR_DASHBOARD_NAVIGATION = [
                 'url_name': 'dashboard:catalogue-option-list',
             },
             {
+                'label': _('Product Attribute Options'),
+                'url_name': 'dashboard:catalogue-attribute-option-group-list',
+            },
+
+            {
                 'label': _('Product Categories'),
                 'url_name': 'dashboard:catalogue-category-list',
             },

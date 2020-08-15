@@ -7,8 +7,8 @@ from .abstract_models import AbstractUser
 
 
 class Types(models.TextChoices):
-    USER = "SPY", "Spy"
-    ADMIN = "DRIVER", "Driver"
+    USER = "USER", "User"
+    ADMIN = "ADMIN", "Admin"
     DASHBOARD_USER = "DASHBOARD_USER", "DASHBOARD_USER"
 
 
