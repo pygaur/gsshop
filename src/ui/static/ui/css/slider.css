@@ -1,0 +1,119 @@
+.slider{display:inline-block;vertical-align:middle;position:relative}
+
+.slider.slider-horizontal{width:210px;height:20px}
+
+.slider.slider-horizontal .slider-track{height:1px;width:100%;margin-top:-5px;top:50%;left:0}
+
+.slider.slider-horizontal .slider-selection{height:100%;top:0;bottom:0}
+
+.slider.slider-horizontal .slider-handle{margin-left:-10px;margin-top:-5px}
+
+.slider.slider-horizontal .slider-handle.triangle{border-width:0 10px 10px 10px;width:0;height:0;border-bottom-color:#0480be;margin-top:0}
+
+.slider.slider-vertical{height:210px;width:20px}
+
+.slider.slider-vertical .slider-track{width:10px;height:100%;margin-left:-5px;left:50%;top:0}
+
+.slider.slider-vertical .slider-selection{width:100%;left:0;top:0;bottom:0}
+
+.slider.slider-vertical .slider-handle{margin-left:-5px;margin-top:-10px}
+
+.slider.slider-vertical .slider-handle.triangle{border-width:10px 0 10px 10px;width:1px;height:1px;border-left-color:#0480be;margin-left:0}
+
+.slider.slider-disabled .slider-handle{background-image:-webkit-linear-gradient(top,#dfdfdf 0,#bebebe 100%);background-image:-o-linear-gradient(top,#dfdfdf 0,#bebebe 100%);background-image:linear-gradient(to bottom,#dfdfdf 0,#bebebe 100%);background-repeat:repeat-x;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffdfdfdf',endColorstr='#ffbebebe',GradientType=0)}
+
+.slider.slider-disabled .slider-track{background-image:-webkit-linear-gradient(top,#e5e5e5 0,#e9e9e9 100%);background-image:-o-linear-gradient(top,#e5e5e5 0,#e9e9e9 100%);background-image:linear-gradient(to bottom,#e5e5e5 0,#e9e9e9 100%);background-repeat:repeat-x;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffe5e5e5',endColorstr='#ffe9e9e9',GradientType=0);cursor:not-allowed}
+.slider input{display:none}
+.slider .tooltip.top{margin-top:-36px}
+.slider .tooltip-inner{white-space:nowrap}
+.slider .hide{display:none}
+.slider-track{position:absolute;cursor:pointer;background-image:-webkit-linear-gradient(top,#002B5E 0,#002B5E 100%);background-image:-o-linear-gradient(top,#002B5E 0,#002B5E 100%);background-image:linear-gradient(to bottom,#002B5E 0,#002B5E 100%);background-repeat:repeat-x;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#002B5E',endColorstr='#002B5E',GradientType=0);-webkit-box-shadow:inset 0 1px 2px rgba(0,0,0,0.1);box-shadow:inset 0 1px 2px rgba(0,0,0,0.1);border-radius:4px}
+
+.slider-selection {
+    background: rgb(0, 43, 94) none repeat scroll 0 0;
+    border-radius: 4px;
+    box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.15) inset;
+    box-sizing: border-box;
+    position: absolute;
+}
+.slider-handle {
+    background-color: rgb(255, 255, 255);
+    background-repeat: repeat-x;
+    border: 2px solid rgb(0, 43, 94);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 1px 2px rgba(0, 0, 0, 0.05);
+    filter: none;
+    height: 12px;
+    opacity: 1;
+    position: absolute;
+    width: 12px;
+}
+
+.slider-handle.round{border-radius:50%}
+
+.slider-handle.triangle{background:transparent none}
+
+.slider-handle.custom{background:transparent none}
+
+.slider-handle.custom::before{line-height:20px;font-size:20px;content:'\2605';color:#726204}
+
+.slider {
+	display: block;
+	float: left;
+    width: 100% !important;
+}
+
+.valueLabel {   
+    display: block;
+    float: left;
+    font-weight: 500;
+    margin-left: 0;
+    margin-right: 3px;
+    margin-top: 17px;
+    padding: 6px 0;
+}
+.valueLabelblck {
+    background: #333333 none repeat scroll 0 0;
+    border: 2px solid #333333;
+    color: #fff;
+    display: block;
+    float: left;
+    font-weight: 500;
+    margin-left: 0;
+    margin-top: 17px;
+    padding: 6px 0px;
+     width: 30.333%;
+}
+.search-coupons .btn-group-vertical > .btn, .btn-group > .btn {
+    float: left;
+    position: relative;
+    width: 100%;
+}
+.search-coupons .btn-group, .btn-group-vertical {
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+    width: 100%;
+}
+.slider {
+    position: relative;
+}
+.slider-horizontal::before {
+    background: rgb(0, 43, 94) none repeat scroll 0 0;
+    border-radius: 50%;
+    content: "";
+    height: 12px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 12px;
+}
+.slider-horizontal::after {
+    background: rgb(0, 43, 94) none repeat scroll 0 0;
+    border-radius: 50%;
+    content: "";
+    height: 12px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 12px;
+}
