@@ -1,0 +1,273 @@
+{% load i18n %}
+{% load category_tags %}
+			<!-- Preloader -->
+			<!--<div id="preloader">
+				<div id="loading">
+				</div>
+			</div>-->
+
+			<!-- Main Header-->
+			<header class="main-header">
+
+				<!--Header Top-->
+				<div class="header-top">
+				<div class="auto-container">
+				<div class="clearfix">
+				<div class="top-left">
+				<ul class="clearfix">
+					<li><span class="icon fa fa-whatsapp"></span>+91 9717353657</li>
+					<li><span class="icon fa fa fa-envelope-o"></span><a href="mailto:contact@legalisor.com">contact@gurukulsankalp.com</a></li>
+				</ul>
+				</div>
+				<div class="top-right clearfix">
+				<ul class="clearfix">
+
+					<li class="language dropdown">
+						<a class="btn btn-default dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" href="#">
+							<span class="icon"></span> English <span class="icon fa fa-angle-down"></span>
+						</a>
+						<ul class="dropdown-menu style-one" aria-labelledby="dropdownMenu2">
+							<li><a href="#">English</a></li>
+							<!--<li><a href="#">Hindi</a></li>-->
+						</ul>
+					</li>
+
+					<li class="language dropdown"><a class="btn btn-default dropdown-toggle" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" href="#">₹ INR <span class="icon fa fa-angle-down"></span></a>
+						<ul class="dropdown-menu style-one" aria-labelledby="dropdownMenu3">
+							<li><a href="#">INR</a></li>
+						</ul>
+					</li>
+
+					{% if user.is_authenticated %}
+					{% block nav_account_navbar_authenticated %}
+					<li>
+
+					<span class="icon fa fa-sign-in"></span><a href="{% url 'customer:summary' %}"><i class="icon-user"></i> {% trans "Account" %}</a>
+						{% if num_unread_notifications > 0 %}
+							<a href="{% url 'customer:notifications-inbox' %}">
+                                <span class="label label-warning">{{ num_unread_notifications }}</span>
+							</a>
+                        {% endif %}
+					</li>
+					{% endblock %}
+					{% else %}
+					<li><span class="icon fa fa-sign-in"></span><a id="login_link" href="{% url 'customer:login' %}"><i class="icon-signin"></i>
+					{% trans "Login or register" %}</a></li>
+					{% endif %}
+
+				</ul>
+				</div>
+				</div>
+				</div>
+				</div>
+
+				<!--Header-Upper-->
+				<div class="header-upper">
+				<div class="auto-container">
+				<div class="clearfix">
+
+				<div class="pull-left logo-outer">
+				<div class="logo"><a href="/"><img src="/static/ui/images/logo.png" alt="" title=""></a></div>
+				</div>
+
+				<div class="pull-right upper-right clearfix">
+				<!--header search box-->
+				<div class="header-search-box">
+
+					<div class="form-box default-form light">
+						<form method="get" action="{% url 'search:search' %}">
+
+							<div class="row clearfix">
+								<div class="form-group col-md-12 col-sm-12 col-xs-12">
+									<div class="field-inner"><input class="search" type="text" name="q" value="" id="id_q" placeholder="Search For keywords... " required></div>
+									<div class="field-inner">
+
+									</div>
+									<div class="field-inner">
+										<button type="submit" class="theme-btn btn-style-one"><span class="fa fa-search"></span></button>
+									</div>
+								</div>
+
+							</div>
+						</form>
+					</div>
+
+				</div>
+
+				</div>
+
+				</div>
+				</div>
+				</div>
+				<!--End Header Upper-->
+
+				<!--Header Lower-->
+				<div class="header-lower">
+
+				<div class="auto-container">
+
+				<div class="main-menu menu-category">
+
+				<ul class="clearfix">
+				<li class="current"><a href="#"><span class="icon fa fa-align-justify"></span> &ensp;ALL CATEGORIES</a>
+					<ul class="mega-menu">
+
+
+
+						<li class="dropdown"><a href="#"><span class="icon fa fa-mobile"></span>Mobile</a>
+							<div class="menu-options">
+								<div class="row clearfix">
+									<div class="column col-md-4 col-sm-6 col-xs-12">
+										<h3>Women's</h3>
+										<ul class="list-style-three">
+											<li><a href="#">Dresses</a></li>
+											<li><a href="#">Coats & Jackets</a></li>
+											<li><a href="#">Blouses & Shirts</a></li>
+											<li><a href="#">Tops & Tees</a></li>
+											<li><a href="#">Hoodies & Sweatshirts</a></li>
+											<li><a href="#">Intimates</a></li>
+											<li><a href="#">Swimwear</a></li>
+											<li><a href="#">Pants & Capris</a></li>
+											<li><a href="#">Sweaters</a></li>
+											<li><a href="#">Accessories</a></li>
+										</ul>
+									</div>
+									<div class="column col-md-4 col-sm-6 col-xs-12">
+										<h3>Men's</h3>
+										<ul class="list-style-three">
+											<li><a href="#">Dresses</a></li>
+											<li><a href="#">Coats & Jackets</a></li>
+											<li><a href="#">Blouses & Shirts</a></li>
+											<li><a href="#">Tops & Tees</a></li>
+											<li><a href="#">Hoodies & Sweatshirts</a></li>
+											<li><a href="#">Intimates</a></li>
+											<li><a href="#">Swimwear</a></li>
+											<li><a href="#">Pants & Capris</a></li>
+											<li><a href="#">Sweaters</a></li>
+											<li><a href="#">Accessories</a></li>
+										</ul>
+									</div>
+									<div class="image-column col-md-4 col-sm-6 col-xs-12">
+										<div class="image">
+											<img src="/static/ui/images/product.jpg" alt="" />
+										</div>
+									</div>
+								</div>
+							</div>
+						</li>
+						<li class="dropdown"><a href="#"><span class="icon fa fa-laptop"></span>Computer</a>
+							<div class="menu-options">
+								<div class="row clearfix">
+									<div class="column col-md-4 col-sm-6 col-xs-12">
+										<h3>Laptops</h3>
+										<ul class="list-style-three">
+											<li><a href="#">Ram</a></li>
+											<li><a href="#">Harddrive</a></li>
+											<li><a href="#">Flash</a></li>
+											<li><a href="#">Accessories</a></li>
+											<li><a href="#">Chargers</a></li>
+										</ul>
+									</div>
+									<div class="column col-md-4 col-sm-6 col-xs-12">
+										<h3>Cpu's</h3>
+										<ul class="list-style-three">
+											<li><a href="#">Monitors</a></li>
+											<li><a href="#">Cpu</a></li>
+											<li><a href="#">i-3</a></li>
+											<li><a href="#">i-5</a></li>
+											<li><a href="#">Accessories</a></li>
+										</ul>
+									</div>
+									<div class="image-column col-md-4 col-sm-6 col-xs-12">
+										<div class="image">
+											<img src="/static/ui/images/laptop.jpg" alt="" />
+										</div>
+									</div>
+								</div>
+							</div>
+						</li>
+
+
+
+				{% category_tree as tree_categories %}
+				{% if tree_categories %}
+				{% for tree_category in tree_categories %}
+
+				<li><a href="{{ tree_category.url }}"><span class="icon fa"></span>{{ tree_category.name }}</a></li>
+
+
+							  {% if tree_category.has_children %}<ul>{% else %}</li>{% endif %}
+				{% for n in tree_category.num_to_close %}
+					</ul></li>
+				{% endfor %}
+				{% endfor %}
+				{% endif %}
+
+
+					</ul>
+				</li>
+				</ul>
+
+				</div>
+
+
+
+
+
+
+				<div class="nav-outer clearfix">
+
+				<!-- Main Menu -->
+				<nav class="main-menu">
+				<div class="navbar-header">
+					<!-- Toggle Button -->
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+				</div>
+
+				<div class="navbar-collapse collapse clearfix">
+					<ul class="navigation clearfix">
+						<li class="current dropdown"><a href="/">HOME</a>
+
+						</li>
+						<li><a href="/catalogue/">SHOPS</a></li>
+						<li><a href="/">DEALS</a></li>
+<li><a href="/">BLOG</a></li>
+
+<li><a href="/">ABOUT US</a></li>
+
+						<li><a href="/">CONTACT US</a></li>
+					</ul>
+				</div>
+				</nav>
+
+
+				<ul class="options-box">
+
+				<!-- Main Menu End-->
+				<li class="search-box-outer">
+
+
+
+					<div class="dropdown">
+						<button class="search-box-btn dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fa fa-shopping-cart"></span></button>
+
+						<ul class="dropdown-menu pull-right search-panel" aria-labelledby="dropdownMenu1">
+							{% include "ui/partials/basket_quick.html" %}
+						</ul>
+					</div>
+				</li>
+
+				</ul>
+
+				</div>
+
+				</div>
+				</div>
+				<!--End Header Lower-->
+
+			</header>
+			<!--End Main Header -->
