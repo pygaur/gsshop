@@ -5,6 +5,7 @@ from collections import OrderedDict
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 
+
 OSCAR_SHOP_NAME = 'Gurukul Sankalp'
 OSCAR_SHOP_TAGLINE = ''
 OSCAR_HOMEPAGE = reverse_lazy('ui_index')
@@ -28,8 +29,6 @@ OSCAR_REQUIRED_ADDRESS_FIELDS = ('first_name', 'last_name', 'line1',
                                  'line4', 'postcode', 'country', 'phone_number',
                                  'line2', 'state'
                                  )
-
-
 
 # Checkout
 OSCAR_ALLOW_ANON_CHECKOUT = False

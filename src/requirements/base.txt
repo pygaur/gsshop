@@ -27,9 +27,24 @@ pycountry==20.7.3
 # sorl-thumbnail
 sorl-thumbnail==12.6.3
 
-# Postgres
-psycopg2-2.8.5
-
 # Django Simple Captcha
 django-simple-captcha==0.5.12
 django-ranged-response==0.2.0
+
+
+# Postgres
+psycopg2==2.8.5
+
+# django storages
+django-storages==1.9.1
+
+# dj-database-url
+dj-database-url==0.5.0
+
+
+# gunicorn
+gunicorn==20.0.4
+setuptools==49.6.0
+
+# Django environ
+django-environ==0.4.5

@@ -8,17 +8,21 @@ except ImportError:
     pass
 
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'db.sqlite3',
-        'USER': '',
-        'PASSWORD': '',
-        'HOST': '',
-        'PORT': '',
-        'ATOMIC_REQUESTS': True,
-    }
-}
+def get_list(text):
+    return [item.strip() for item in text.split(",")]
+
+
+DEBUG = False
+ALLOWED_HOSTS = get_list(os.environ.get("ALLOWED_HOSTS", "localhost,127.0.0.1"))
+ADMIN_URL = env("DJANGO_ADMIN_URL")
+
+# DATABASES
+# ------------------------------------------------------------------------------
+DATABASES["default"] = env.db("DATABASE_URL")  # noqa: F405
+DATABASES["default"]["ATOMIC_REQUESTS"] = True  # noqa: F405
+DATABASES["default"]["CONN_MAX_AGE"] = env.int(  # noqa: F405
+    "CONN_MAX_AGE", default=60
+)
 
 
 HAYSTACK_CONNECTIONS = {
@@ -37,11 +41,5 @@ STATICFILES_DIRS = (
 )
 
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = '587'
-EMAIL_HOST_USER = 'www.prashantgaur@gmail.com'
-EMAIL_HOST_PASSWORD = 'minepassforwww'
-EMAIL_USE_TLS = True
-EMAIL_USE_SSL = False
+EMAIL_BACKEND = env("DJANGO_EMAIL_BACKEND")
 

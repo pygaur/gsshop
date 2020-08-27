@@ -23,7 +23,3 @@ class User(AbstractUser):
         _("Type"), max_length=50, choices=Types.choices, default=base_type
     )
 
-    def save(self, *args, **kwargs):
-        if not self.id:
-            self.type = self.base_type
-        return super().save(*args, **kwargs)

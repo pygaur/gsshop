@@ -4,16 +4,14 @@ Base settings to build other settings files upon
 import os
 from pathlib import Path
 
+import environ
+
 from oscar.defaults import *
 
+env = environ.Env()
+environ.Env.read_env()
+
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent.parent
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '^bu2o)zk@s-y^-0w*t$(2#^#7be_$1b1f27*+1@43lrf%x*-0a'
-
 
 
 ALLOWED_HOSTS = []
@@ -90,6 +88,16 @@ MIDDLEWARE = [
     'oscar.apps.basket.middleware.BasketMiddleware',
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
 ]
+
+
+# DATABASES
+# ------------------------------------------------------------------------------
+# https://docs.djangoproject.com/en/dev/ref/settings/#databases
+DATABASES = {
+    "default": env.db("DATABASE_URL")
+}
+DATABASES["default"]["ATOMIC_REQUESTS"] = True
+
 
 ROOT_URLCONF = 'src.urls'
 
