@@ -16,6 +16,8 @@ DEBUG = False
 ALLOWED_HOSTS = get_list(os.environ.get("ALLOWED_HOSTS", "localhost,127.0.0.1"))
 ADMIN_URL = env("DJANGO_ADMIN_URL")
 
+SECRET_KEY = env("DJANGO_SECRET_KEY")
+
 # DATABASES
 # ------------------------------------------------------------------------------
 DATABASES["default"] = env.db("DATABASE_URL")  # noqa: F405
