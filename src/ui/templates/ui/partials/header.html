@@ -109,102 +109,8 @@
 				<div class="main-menu menu-category">
 
 				<ul class="clearfix">
-				<li class="current"><a href="#"><span class="icon fa fa-align-justify"></span> &ensp;ALL CATEGORIES</a>
-					<ul class="mega-menu">
+				<li class="current"><a href="#">ALL CATEGORIES</a>
 
-
-
-						<li class="dropdown"><a href="#"><span class="icon fa fa-mobile"></span>Mobile</a>
-							<div class="menu-options">
-								<div class="row clearfix">
-									<div class="column col-md-4 col-sm-6 col-xs-12">
-										<h3>Women's</h3>
-										<ul class="list-style-three">
-											<li><a href="#">Dresses</a></li>
-											<li><a href="#">Coats & Jackets</a></li>
-											<li><a href="#">Blouses & Shirts</a></li>
-											<li><a href="#">Tops & Tees</a></li>
-											<li><a href="#">Hoodies & Sweatshirts</a></li>
-											<li><a href="#">Intimates</a></li>
-											<li><a href="#">Swimwear</a></li>
-											<li><a href="#">Pants & Capris</a></li>
-											<li><a href="#">Sweaters</a></li>
-											<li><a href="#">Accessories</a></li>
-										</ul>
-									</div>
-									<div class="column col-md-4 col-sm-6 col-xs-12">
-										<h3>Men's</h3>
-										<ul class="list-style-three">
-											<li><a href="#">Dresses</a></li>
-											<li><a href="#">Coats & Jackets</a></li>
-											<li><a href="#">Blouses & Shirts</a></li>
-											<li><a href="#">Tops & Tees</a></li>
-											<li><a href="#">Hoodies & Sweatshirts</a></li>
-											<li><a href="#">Intimates</a></li>
-											<li><a href="#">Swimwear</a></li>
-											<li><a href="#">Pants & Capris</a></li>
-											<li><a href="#">Sweaters</a></li>
-											<li><a href="#">Accessories</a></li>
-										</ul>
-									</div>
-									<div class="image-column col-md-4 col-sm-6 col-xs-12">
-										<div class="image">
-											<img src="/static/ui/images/product.jpg" alt="" />
-										</div>
-									</div>
-								</div>
-							</div>
-						</li>
-						<li class="dropdown"><a href="#"><span class="icon fa fa-laptop"></span>Computer</a>
-							<div class="menu-options">
-								<div class="row clearfix">
-									<div class="column col-md-4 col-sm-6 col-xs-12">
-										<h3>Laptops</h3>
-										<ul class="list-style-three">
-											<li><a href="#">Ram</a></li>
-											<li><a href="#">Harddrive</a></li>
-											<li><a href="#">Flash</a></li>
-											<li><a href="#">Accessories</a></li>
-											<li><a href="#">Chargers</a></li>
-										</ul>
-									</div>
-									<div class="column col-md-4 col-sm-6 col-xs-12">
-										<h3>Cpu's</h3>
-										<ul class="list-style-three">
-											<li><a href="#">Monitors</a></li>
-											<li><a href="#">Cpu</a></li>
-											<li><a href="#">i-3</a></li>
-											<li><a href="#">i-5</a></li>
-											<li><a href="#">Accessories</a></li>
-										</ul>
-									</div>
-									<div class="image-column col-md-4 col-sm-6 col-xs-12">
-										<div class="image">
-											<img src="/static/ui/images/laptop.jpg" alt="" />
-										</div>
-									</div>
-								</div>
-							</div>
-						</li>
-
-
-
-				{% category_tree as tree_categories %}
-				{% if tree_categories %}
-				{% for tree_category in tree_categories %}
-
-				<li><a href="{{ tree_category.url }}"><span class="icon fa"></span>{{ tree_category.name }}</a></li>
-
-
-							  {% if tree_category.has_children %}<ul>{% else %}</li>{% endif %}
-				{% for n in tree_category.num_to_close %}
-					</ul></li>
-				{% endfor %}
-				{% endfor %}
-				{% endif %}
-
-
-					</ul>
 				</li>
 				</ul>
 
@@ -264,6 +170,9 @@
 				</ul>
 
 				</div>
+
+
+
 
 				</div>
 				</div>

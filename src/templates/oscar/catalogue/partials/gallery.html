@@ -1,0 +1,48 @@
+{% load i18n %}gallery.html
+{% load image_tags %}
+
+
+{% with all_images=product.get_all_images %}
+
+    {% if all_images|length > 1 %}
+
+        <div class="carousel-outer">
+
+<ul class="image-carousel owl-carousel owl-theme">
+                {% for image in all_images %}
+    <li>{% oscar_thumbnail image.original "440x400" upscale=False as thumb %}<a href="#" class="lightbox-image" title="Image Caption Here"><img src="{{ thumb.url }}" alt="{{ product.get_title }}"></a></li>
+
+                {% endfor %}
+</ul>
+
+                   <ul class="thumbs-carousel owl-carousel owl-theme">
+                       {% for image in all_images %}
+                            <li>
+                        {% oscar_thumbnail image.original "65x55" crop="center" as thumb %}
+                        <img src="{{ thumb.url }}" alt="{{ product.get_title }}" />
+                    </li>
+                        {% endfor %}
+                   </ul>
+
+
+        </div>
+
+    {% else %}
+
+        {# Only one image to show #}
+        <div id="product_gallery" class="carousel">
+            <div class="thumbnail">
+                <div class="carousel-inner">
+                    <div class="item active">
+                    {% with image=product.primary_image %}
+                        {% oscar_thumbnail image.original "440x400" upscale=False as thumb %}
+                        <img src="{{ thumb.url }}" alt="{{ product.get_title }}" />
+                    {% endwith %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    {% endif %}
+{% endwith %}
+

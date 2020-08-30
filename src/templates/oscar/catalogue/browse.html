@@ -28,7 +28,7 @@
                 </div>
 
  {% endfor %}
-
+{% include "oscar/partials/pagination.html" %}
     {% else %}
         <p class="nonefound">{% trans "No products found." %}</p>
     {% endif %}
@@ -36,19 +36,10 @@
 
 
 
-                <div class="row">
-                    <div class="col-md-12 text-center">
-                        <ul class="pagination">
-                            <li class="active"><a herf="#"><i class="fa fa-angle-left" aria-hidden="true"></i></a></li>
-                            <li><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">...</a></li>
-                            <li><a href="#">20</a></li>
-                            <li class="active"><a herf="#"><i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
+
+
+
+
             </div>
         </div>
     </section>
@@ -59,5 +50,3 @@
     {% endblock %}
     {% block content_2 %}
     {% endblock %}
-</body>
-</html>

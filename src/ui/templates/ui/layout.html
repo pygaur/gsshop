@@ -5,6 +5,8 @@
     {% if use_less %}
         <link rel="stylesheet/less" type="text/css" href="{% static "oscar/less/styles.less" %}" />
     {% else %}
+    {% endif %}
+    <link rel="stylesheet" type="text/css" href="{% static "oscar/css/styles.css" %}" />
 
 	<link rel="stylesheet" href="/static/ui/css/bootstrap.min.css" type="text/css">
 	<!-- Dropdownhover CSS -->
@@ -23,7 +25,7 @@
 
 	<link href="/static/ui/css/revolution-slider.css" rel="stylesheet">
 	<link href="/static/ui/owl-carousel/owl.carousel.css" rel="stylesheet">
-    {% endif %}
+
 {% endblock %}
 
 {% block layout %}

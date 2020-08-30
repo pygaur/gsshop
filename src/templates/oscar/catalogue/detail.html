@@ -1,0 +1,493 @@
+{% extends "ui/layout_2_col.html" %}
+
+{% load history_tags %}
+{% load currency_filters %}
+{% load reviews_tags %}
+{% load product_tags %}
+{% load display_tags %}
+{% load i18n %}
+{% load purchase_info_tags %}
+
+{% block title %}
+    {{ product.get_title }} | {{ block.super }}
+{% endblock %}
+
+{% block description %}
+    {{ product.description|default:""|striptags }}
+{% endblock %}
+
+{% block breadcrumbs %}
+<ul class="breadcrumb">
+    <li>
+        <a href="{{ homepage_url }}">{% trans "Home" %}</a>
+    </li>
+    {% with category=product.get_categories.first %}
+        {% for c in category.get_ancestors_and_self %}
+        <li>
+            <a href="{{ c.get_absolute_url }}">{{ c.name }}</a>
+        </li>
+        {% endfor %}
+        <li class="active">{{ product.get_title }}</li>
+
+        {% get_back_button as backbutton %}
+        {% if backbutton %}
+            <li class="pull-right">
+                <a href="{{ backbutton.url }}">
+                    <i class="icon-arrow-left"></i> {{ backbutton.title }}
+                </a>
+            </li>
+        {% endif %}
+    {% endwith %}
+</ul>
+{% endblock %}
+
+
+{% block content_main %}
+
+
+
+
+
+    <!--End Page Title-->
+    <div class="clearfix"></div>
+
+	<!--Sidebar Page-->
+    <div class="sidebar-page-container">
+        <div class="auto-container">
+            <div class="row clearfix">
+
+                <!--Content Side-->
+                <div class="content-side col-lg-8 col-md-8 col-sm-12 col-xs-12">
+
+                    <div class="shop-page">
+                    	<div class="image-column">
+
+
+                                   {% block product_gallery %}
+                                        {% include "oscar/catalogue/partials/gallery.html" %}
+                                     {% endblock %}
+
+
+
+                        </div>
+
+                    </div>
+
+                    <!--Product Info Tabs-->
+                    <div class="product-info-tabs">
+                        <!--Product Tabs-->
+                        <div class="prod-tabs tabs-box">
+
+                            <!--Tab Btns-->
+                            <ul class="tab-btns tab-buttons clearfix">
+                                <li data-tab="#prod-details" class="tab-btn active-btn">Description</li>
+                                <li data-tab="#prod-info" class="tab-btn">Additional Information</li>
+                                <li data-tab="#prod-reviews" class="tab-btn">Reviews (1)</li>
+                                <li data-tab="#prod-map" class="tab-btn">Maps & Directions</li>
+                            </ul>
+
+                            <!--Tabs Container-->
+                            <div class="tabs-content">
+
+                                <!--Tab / Active Tab-->
+                                <div class="tab active-tab" id="prod-details">
+                                    <div class="content">
+                                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>
+                                        <p>In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretiLorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes,</p>
+                                    </div>
+                                </div>
+
+                                <!--Tab-->
+                                <div class="tab" id="prod-info">
+                                    <!--Reviews Container-->
+                                    <div class="reviews-container">
+
+                                        <!--Review-->
+                                        <div class="review-box clearfix">
+                                            <figure class="rev-thumb"><img src="/static/ui/images/author-1.jpg" alt=""></figure>
+                                            <div class="rev-content">
+                                                <div class="rev-header clearfix">
+                                                    <h4>Michel Britney</h4>
+                                                    <div class="rating"><span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star-o"></span> <span class="fa fa-star-o"></span></div>
+                                                    <div class="time">18 Hours Ago</div>
+                                                </div>
+                                                <div class="rev-text">The mad lightning no one you beat of just one drum they call him Flipper Flipper faster than lightning no one you see is smarter each week my friends you are sure to get a smile from seven stranded cast aways here on Gilligans Isle they call him Flipper Flipper faster than lightning no one you see is smarter than he loveable space that needs your face threes company too.</div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <!--End Tab-->
+
+                                <!--Tab / Active Tab-->
+                                <div class="tab" id="prod-reviews">
+                                	<div class="content">
+                                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>
+                                        <p>In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretiLorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes,</p>
+                                    </div>
+                                </div>
+
+                                <!--Tab / Active Tab-->
+                                <div class="tab" id="prod-map">
+                                	<div class="content">
+                                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>
+                                        <p>In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretiLorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes,</p>
+                                    </div>
+                                </div>
+                    		</div>
+                		</div>
+                	</div>
+
+                    <div class="addition-info">
+                    	<h2>Additional details</h2>
+                    	<div class="row clearfix">
+
+                            <ul class="additional-list col-md-4 col-sm-6 col-xs-12">
+                            	<li>Property Size: <span>2300 Sq Ft</span></li>
+                                <li>Rooms: <span>5</span></li>
+                                <li>Garages: <span>2</span></li>
+                                <li>Year built: <span>1991</span></li>
+                            </ul>
+
+                            <ul class="additional-list col-md-4 col-sm-6 col-xs-12">
+                            	<li>Lot size: <span>5000 Sq Ft </span></li>
+                                <li>Bedrooms: <span>4</span></li>
+                                <li>Roofing: <span>New </span></li>
+                                <li>Available from: <span>1 August 2014</span></li>
+                            </ul>
+
+                            <ul class="additional-list col-md-4 col-sm-6 col-xs-12">
+                            	<li>Price: <span>$23000</span></li>
+                                <li>Bathrooms: <span>2</span></li>
+                                <li>Structure Type: <span>Bricks</span></li>
+                            </ul>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <!--Sidebar-->
+                <div class="sidebar-side col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    <aside class="sidebar">
+
+                        <div class="product-info-widget">
+                        	<div class="inner-box">
+                                <h2>Wyndham Garden at Palmas del Mar – Puerto Rico</h2>
+                                <div class="text">Stay for two, with optional all-inclusive package. Dates into September</div>
+
+                                <div class="product-info-block">
+                                	<div class="inner">
+                                    	<!--<h2><a href="#">Family Fireplace Suite</a></h2>-->
+                                        <div class="form-group">
+                                            <input type="radio" name="tag" id="tag-3" >&ensp;
+                                            <label class="remember-tag" for="tag-3">Family Fireplace Suite</label>
+                                        </div>
+                                        <div class="text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commod</div>
+                                        <ul class="product-price">
+                                        	<li>8500</li>
+                                            <li><strong>$444</strong></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="product-info-block">
+                                	<div class="inner">
+                                    	<div class="form-group">
+                                            <input type="radio" name="tag" id="tag-4" >&ensp;
+                                            <label class="remember-tag" for="tag-4">Family Fireplace Suite</label>
+                                        </div>
+                                        <div class="text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commod</div>
+                                        <ul class="product-price">
+                                        	<li>8500</li>
+                                            <li><strong>$444</strong></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="product-info-block">
+                                	<div class="inner">
+                                    	<div class="form-group">
+                                            <input type="radio" name="tag" id="tag-5" >&ensp;
+                                            <label class="remember-tag" for="tag-5">Family Fireplace Suite</label>
+                                        </div>
+                                        <div class="text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commod</div>
+                                        <ul class="product-price">
+                                        	<li>8500</li>
+                                            <li><strong>$444</strong></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!--Cart Widget-->
+                        <div class="cart-widget">
+                        	<div class="inner-box">
+                            	<a href="shop-single.html" class="cart-btn">add to cart</a>
+                                <ul class="product-values">
+                                	<li>Value<span>$135.0</span></li>
+                                    <li>Discount<span>26%</span></li>
+                                    <li>You Save<span>$135.0</span></li>
+                                </ul>
+                                <div class="left-time">HURRY UP! TIME LEFT:</div>
+
+                                <!--Countdown Timer-->
+		                        <div class="time-counter"><div class="time-countdown clearfix" data-countdown="2017/8/29"></div></div>
+
+                                <ul class="cart-nav">
+                                    <li><a href="#"><span class="icon fa fa-facebook-square"></span></a></li>
+                                    <li><a href="#"><span class="icon fa fa-twitter-square"></span></a></li>
+                                    <li><a href="#"><span class="icon fa fa-google-plus-square"></span></a></li>
+                                    <li><a href="#"><span class="icon fa fa-linkedin-square"></span></a></li>
+                                    <li><a href="#"><span class="icon fa fa-youtube-square"></span></a></li>
+                                </ul>
+
+                                <div class="purchased"><a href="#"><span class="cart fa fa-cart-plus"></span><span>268 deals</span> Purchased</a></div>
+
+                            </div>
+                        </div>
+
+                        <!--seller widget-->
+                        <div class="seller-widget">
+                        	<div class="inner-box">
+                            	<h2>SELLER INFO</h2>
+                                <div class="text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient ntes, nascetur ridiculus mus. Donec quam feLorem ipsum dolor sit amet, consectetuer adipictetuer adipiscing elit. Aenean odo ligula eget dolor.</div>
+                                <ul class="seller-list">
+                                	<li>Stay <span>for four</span> in a studio or one-bedroom villa</li>
+                                    <li>Stay <span>for four</span> in a studio or one-bedroom villa</li>
+                                    <li>Stay <span>for four</span> in a studio or one-bedroom villa</li>
+                                    <li>Stay <span>for four</span> in a studio or one-bedroom villa</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!--Product Widget-->
+                        <div class="product-widget">
+                        	<div class="single-item-carousel owl-carousel owl-theme">
+
+                                <div class="product-slide">
+                                    <div class="inner">
+                                        <div class="image">
+                                            <div class="print-total"><span class="icon fa fa-print"></span>10</div>
+                                            <img src="/static/ui/images/produc-1.jpg" alt="" />
+                                            <h3>US$349 — Bermuda This Summer: 4-Star Resort w/$200 Credit*</h3>
+                                            <div class="lower-data">
+                                                <ul>
+                                                    <li>-55%</li>
+                                                    <li>$756</li>
+                                                    <li>$325</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="product-slide">
+                                    <div class="inner">
+                                        <div class="image">
+                                            <div class="print-total"><span class="icon fa fa-print"></span>10</div>
+                                            <img src="/static/ui/images/produc-1.jpg" alt="" />
+                                            <h3>US$349 — Bermuda This Summer: 4-Star Resort w/$200 Credit*</h3>
+                                            <div class="lower-data">
+                                                <ul>
+                                                    <li>-55%</li>
+                                                    <li>$756</li>
+                                                    <li>$325</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="product-slide">
+                                    <div class="inner">
+                                        <div class="image">
+                                            <div class="print-total"><span class="icon fa fa-print"></span>10</div>
+                                            <img src="/static/ui/images/produc-1.jpg" alt="" />
+                                            <h3>US$349 — Bermuda This Summer: 4-Star Resort w/$200 Credit*</h3>
+                                            <div class="lower-data">
+                                                <ul>
+                                                    <li>-55%</li>
+                                                    <li>$756</li>
+                                                    <li>$325</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </aside>
+                </div>
+
+            </div>
+    	</div>
+	</div>
+
+
+
+<article class="product_page"><!-- Start of product page -->
+
+    <div class="row">
+
+
+
+        {% block product_main %}
+        <div class="col-sm-6 product_main">
+            {% comment %}
+            This is a but clunky here.  Better to have some kind of JS-driven dashboard menu that
+            pops out when clicked.  A bit like the Django-Debug-Toolbar button
+            {% endcomment %}
+            {% if user.is_staff %}
+                <a class="pull-right hidden-xs" href="{% url 'dashboard:catalogue-product' pk=product.id %}"><small><i class="icon-edit"></i> {% trans "Edit this product" %}</small></a>
+            {% endif %}
+            <h1>{{ product.get_title }}</h1>
+
+            {% block product_stock_record %}
+                {% include "oscar/catalogue/partials/stock_record.html" with verbose=1 %}
+            {% endblock %}
+
+            {% iffeature "reviews" %}
+                {% include "oscar/catalogue/reviews/partials/review_stars.html" %}
+            {% endiffeature %}
+
+            <hr/>
+
+            {% if not product.is_parent %}
+                {% block product_basket_form %}
+                    {% include "oscar/catalogue/partials/add_to_basket_form.html" %}
+                {% endblock %}
+            {% else %}
+                {% block variants %}
+                    <h2>{% trans 'Variants:' %}</h2>
+                    {% for child in product.children.public %}
+                        {% purchase_info_for_product request child as child_session %}
+                        {% if child_session.availability.is_available_to_buy %}
+                            <a href="{{ child.get_absolute_url }}">{{ child.get_title }}</a><br>
+                        {% endif %}
+                    {% endfor %}
+                {% endblock %}
+            {% endif %}
+        </div><!-- /col-sm-6 -->
+        {% endblock %}
+
+    </div><!-- /row -->
+
+    {% block product_description %}
+        {% if product.description %}
+        <div id="product_description" class="sub-header">
+            <h2>{% trans "Product Description" %}</h2>
+        </div>
+        <p>{{ product.description|safe }}</p>
+        {% endif %}
+    {% endblock %}
+
+    {% block product_info %}
+    <div class="sub-header">
+        <h2>{% trans "Product Information" %}</h2>
+    </div>
+    <table class="table table-striped">
+        {% if product.upc %}
+        <tr>
+            <th>{% trans "UPC" %}</th><td>{{ product.upc }}</td>
+        </tr>
+        {% endif %}
+        <tr>
+            <th>{% trans "Product Type" %}</th><td>{{ product.get_product_class.name }}</td>
+        </tr>
+
+        {% purchase_info_for_product request product as session %}
+        {% if session.price.exists %}
+            <tr>
+                <th>{% trans "Price (excl. tax)" %}</th><td>{{ session.price.excl_tax|currency:session.price.currency }}</td>
+            </tr>
+            {% if session.price.is_tax_known %}
+                <tr>
+                    <th>{% trans "Price (incl. tax)" %}</th><td>{{ session.price.incl_tax|currency:session.price.currency }}</td>
+                </tr>
+                <tr>
+                    <th>{% trans "Tax" %}</th><td>{{ session.price.tax|currency:session.price.currency }}</td>
+                </tr>
+            {% endif %}
+            <tr>
+                <th>{% trans "Availability" %}</th>
+                <td>{{ session.availability.message }}</td>
+            </tr>
+        {% endif %}
+        {% for av in product.attribute_values.all %}
+            <tr>
+                <th>{{ av.attribute.name }}</th>
+                <td>{{ av.value_as_html }}</td>
+            </tr>
+        {% endfor %}
+        {% iffeature "reviews" %}
+            <tr>
+                <th>{% trans "Number of reviews" %}</th>
+                <td>{{ product.num_approved_reviews }}</td>
+            </tr>
+        {% endiffeature %}
+    </table>
+    {% endblock %}
+
+    {% iffeature "reviews" %}
+        {% block product_review %}
+        <section>
+            <div id="reviews" class="sub-header">
+                {% if product.num_approved_reviews > 3 %}
+                    <a href="{% url 'catalogue:reviews-list' product_slug=product.slug product_pk=product.id %}" class="btn pull-right">{% trans "See all reviews" %}</a>
+                {% endif %}
+                <h2>{% trans "Customer Reviews" %}</h2>
+            </div>
+
+            {% if product.num_approved_reviews == 0 %}
+                <p>
+                    {% if product|is_review_permitted:user %}
+                        {% url 'catalogue:reviews-add' product_slug=product.slug product_pk=product.id as add_review_url %}
+                            {% blocktrans %}This product does not have any reviews yet -
+                            <a href="{{ add_review_url }}#addreview">be the first to write one</a>.
+                        {% endblocktrans %}
+                    {% else %}
+                        {% trans "This product does not have any reviews yet" %}.
+                    {% endif %}
+                </p>
+            {% else %}
+                <ol class="list-unstyled review-list">
+                    {% for review in product.reviews.approved.all|slice:":3" %}
+                        <li>
+                        {% include 'oscar/catalogue/partials/review.html' %}
+                        </li>
+                    {% endfor %}
+                </ol>
+            {% endif %}
+        </section>
+        {% endblock product_review %}
+    {% endiffeature %}
+
+    {% with recommended_products=product.sorted_recommended_products|slice:":6" %}
+        {% if recommended_products %}
+            <div class="sub-header">
+                <h2>{% trans "Recommended items" %}</h2>
+            </div>
+            <ul class="row">
+                {% for product in recommended_products %}
+                <li class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
+                    {% render_product product %}
+                </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
+    {% recently_viewed_products current_product=product %}
+
+</article><!-- End of product page -->
+{% endblock content_main %}
+	{% block content_2 %}
+		{% endblock %}
+{% block extrascripts %}
+    {{ block.super }}
+{% endblock %}
